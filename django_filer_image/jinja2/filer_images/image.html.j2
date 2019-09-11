@@ -1,0 +1,26 @@
+<picture>
+    {% for min_width, width in breakpoints %}
+        {% if image.webp %}
+            <source
+                    {% if min_width %}media="(min-width: {{ min_width }}px)"{% endif %}
+                    {{ srcset_attribute}}="{{ get_srcset(image.webp.url, rates, width=width) }}"
+                    type="image/webp"
+            />
+        {% endif %}
+        {% if image.progressive_jpeg %}
+            <source
+                    {% if min_width %}media="(min-width: {{ min_width }}px)"{% endif %}
+                    data-srcset="{{ get_srcset(image.progressive_jpeg.url, rates, width=width) }}"
+                    type="image/jpeg"
+            />
+        {% else %}
+            <source
+                    {% if min_width %}media="(min-width: {{ min_width }}px)"{% endif %}
+                    data-srcset="{{ get_srcset(image.file.url, rates, width=width) }}"
+            />
+        {% endif %}
+    {% endfor %}
+
+    {% set first_breakpoint = first(breakpoints) %}
+    <img {% if alt %}{{ alt }}{% endif %} class="{{ constant_class }} {{ class }}" src="{{ image.preview.url }}" {% if first_breakpoint %}{{ srcset_attribute }}="{{ get_srcset(image.file.url, rates, width=first_breakpoint[1]) }}"{% endif %}>
+</picture>
