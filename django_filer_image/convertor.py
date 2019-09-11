@@ -1,17 +1,7 @@
 from __future__ import annotations
-from typing import (
-    Type,
-    TYPE_CHECKING,
-)
-from os.path import splitext
 from io import BytesIO
 from math import ceil
 from PIL import Image
-from funcy import first
-
-from .settings import (
-    IMAGE_QUALITY,
-)
 
 
 def get_image(file):
@@ -21,11 +11,11 @@ def get_image(file):
     return image
 
 
-def get_preview_image(image, preview_size, quailty=100):
+def get_preview_image(image, preview_size, quality=100):
     size = get_preview_size(image, preview_size)
     resized_image = image.resize(size)
 
-    preview_progressive_jpeg = get_jpeg(resized_image, progressive=False, quality=quailty)
+    preview_progressive_jpeg = get_jpeg(resized_image, progressive=False, quality=quality)
 
     return preview_progressive_jpeg
 

@@ -28,7 +28,7 @@ from .settings import (
 )
 
 
-class Image(BaseImage):
+class FilerImage(BaseImage):
     webp = MultiStorageFileField(
         verbose_name='WebP image',
         null=True,
@@ -76,11 +76,11 @@ class Image(BaseImage):
         return mark_safe(html)
 
     class Meta(BaseImage.Meta):
-        app_label = 'images'
+        app_label = 'django_filer_image'
 
 
-@receiver(pre_save, sender=Image)
-def generate_images(sender, instance: Image, **kwargs):
+@receiver(pre_save, sender=FilerImage)
+def generate_images(sender, instance: FilerImage, **kwargs):
     image = get_image(instance.file)
     filename = first(splitext(instance.file.name))
 

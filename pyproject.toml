@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-filer-image"
-version = "0.0.1"
+version = "0.0.2"
 description = ""
 authors = ["Дмитрий <acrius@mail.ru>"]
 
