@@ -7,7 +7,7 @@ authors = ["Дмитрий <acrius@mail.ru>"]
 [tool.poetry.dependencies]
 python = "^3.5"
 django = "^1.11 || ^2.0 || ^3.0"
-pillow = "^6.1.0"
+pillow = "^6.1.0 || ^7.0 || ^8.0"
 django-filer = "^1.5 || ^2.0"
 funcy = "^1.13"
 
